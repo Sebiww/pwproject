@@ -1,0 +1,33 @@
+<div class="leaderboard-container">
+    <app-navbar></app-navbar>
+    <p class="home-text">In this section the leaderboard for the selected reagion will be showed.</p>
+    <div class="selector-body">
+      <div class="select">
+          <select [(ngModel)]="selectedOption" (click)="onShowLadder()">
+            <option selected disabled>Select a region</option>
+            <option *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
+          </select>
+      </div>
+    </div>
+    <app-laddersearch (searchTextChanged)="onSearchTextEntered($event)"></app-laddersearch>
+    <div class="container" *ngIf="testTabel()">
+      <div class="table">
+        <div class="table-header">
+          <div class="header__item"><a id="name" class="filter__link">Rank</a></div>
+          <div class="header__item"><a id="wins" class="filter__link filter__link--number">Name</a></div>
+          <div class="header__item"><a id="draws" class="filter__link filter__link--number">League Points</a></div>
+          <div class="header__item"><a id="losses" class="filter__link filter__link--number">Wins</a></div>
+          <div class="header__item"><a id="total" class="filter__link filter__link--number">Loses</a></div>
+        </div>
+        <div class="table-content" *ngFor="let summoner of ladder; index as i">	
+          <div class="table-row" *ngIf="searchText === '' || summoner.summonerName.toLowerCase().includes(searchText.toLowerCase())">
+              <div class="table-data">{{i+1}}</div>
+              <div class="table-data">{{summoner.summonerName}}</div>
+              <div class="table-data">{{summoner.leaguePoints}}</div>
+              <div class="table-data">{{summoner.wins}}</div>
+              <div class="table-data">{{summoner.losses}}</div>
+          </div>
+        </div>	
+      </div>
+    </div>
+</div>

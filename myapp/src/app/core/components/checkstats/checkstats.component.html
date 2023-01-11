@@ -1,0 +1,54 @@
+<div class="checkstats-container">
+    <app-navbar></app-navbar>
+    <p class="home-text">In this section you can check the statistics of a player by entering his in-game name</p>
+    <div class="selector-body">
+        <div class="select">
+            <select [(ngModel)]="selectedOption" >
+              <option selected disabled>Select a region</option>
+              <option *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
+            </select>
+        </div>
+    </div>
+
+    
+  <div class="form-container" *ngIf="testSelection()">
+    <div class="item-container">
+      <form #checkstatsForm="ngForm" (ngSubmit)="onCheckStats(checkstatsForm)" class="form">
+        <input type="text" class="form__field" ngModel name="summonerName" id="summonerName" placeholder="Introduce Summoner Name" required="">
+        <button [disabled]="checkstatsForm.invalid" class="btn btn--primary btn--inside uppercase" type="submit">Lock In</button>
+      </form>
+    </div>
+  </div>
+
+  <p class="summoner-not-found-text" *ngIf="summonerExists">This summoner does not exist.</p>
+  <div class="tabel-container-container">
+    <div class="table-container" *ngIf="testShowStats">
+      <div class="table">
+        <div class="table-header">
+          <div class="header__item"><a id="name" class="filter__link"></a></div>
+          <div class="header__item"><a id="wins" class="filter__link filter__link--number">Queue Type</a></div>
+          <div class="header__item"><a id="wins" class="filter__link filter__link--number">Rank</a></div>
+          <div class="header__item"><a id="draws" class="filter__link filter__link--number">League Points</a></div>
+          <div class="header__item"><a id="losses" class="filter__link filter__link--number">Wins</a></div>
+          <div class="header__item"><a id="total" class="filter__link filter__link--number">Loses</a></div>
+          <div class="header__item"><a id="total" class="filter__link filter__link--number">WinRate</a></div>
+        </div>
+        <div class="table-content">	
+          <div class="table-row" *ngFor="let summoner of forSummonerStats; index as i">
+            <div class="table-data">{{i+1}}</div>
+            <div class="table-data">{{getQueueType(summoner.queueType)}}</div>
+            <div class="table-data">{{summoner.tier}} {{summoner.rank}}</div>
+            <div class="table-data">{{summoner.leaguePoints}}</div>
+            <div class="table-data">{{summoner.wins}}</div>
+            <div class="table-data">{{summoner.losses}}</div>
+            <div class="table-data">{{getWinRate(summoner.wins, summoner.losses)}}%</div>
+          </div>
+        </div>	
+      </div>
+    </div>
+  </div>
+    
+</div>
+
+
+

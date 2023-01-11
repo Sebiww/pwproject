@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.home-text{
+  margin-top: 35px;
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-size: 20px;
+  background: rgb(65,105,225);
+  padding: .5rem;
+}
+
+.home-text-2{
+  color: rgb(65,105,225);
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-size: 20px;
+  background: white;
+  padding: .5rem;
+  margin-top: -15px;
+}
+
+.text-eroare{
+  color: red;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-size: 20px;
+  padding: .5rem;
+}
+
+.text-succes{
+  color: green;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-size: 20px;
+  padding: .5rem;
+}
+.selector-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-top: -15px;
+    height: 40px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  select{
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    background-image: none;
+    background: rgb(124, 153, 231);
+    border-radius: 15px;
+    flex: 1;
+    padding: 0 .5em;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+  }
+ select:hover{
+  transition: .25s all ease;
+  background-color: rgb(142, 163, 221);
+ }
+  select::-ms-expand{
+    display: none;
+  }
+
+  .select{
+    outline: none;
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 2em;
+    line-height: 2;
+    background: rgb(124, 153, 231);
+    border-radius: 10px;
+  }
+
+  .select::after{
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+    background: rgb(119, 138, 192);
+    color: rgb(255, 255, 255);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .select:hover::after{
+    color: rgb(124, 153, 231);
+  }
+
+  .introduce-name-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  // variables
+$background: #f5f6fa;
+$text: #ffffff;
+$input-bg-color: #fff;
+$input-text-color: #ffffff;
+$button-bg-color: rgb(65,105,225);
+$button-text-color: #fff;
+
+// button
+.btn {
+  display: inline-block;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  transition: all 200ms ease-in;
+  cursor: pointer;
+  :focus{
+    outline: none;
+  }
+
+  &--primary {
+    background: $button-bg-color;
+    color: $button-text-color;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+    border-bottom-right-radius: .5rem;
+    border-top-right-radius: .5rem;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    padding: 23px 17px;
+
+    &:hover {
+      background: rgb(23, 41, 95);
+      color: rgb(143, 163, 224);
+      outline: none;
+    }
+
+    &:active {
+      outline: none;
+      background: $button-bg-color;
+      box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+    }
+  }
+
+  &--inside {
+    outline: none;
+    margin-left: 0;
+    margin-top: -3px;
+  }
+}
+
+//** form
+.form {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+  &__field {
+    border-bottom-left-radius: .5rem;
+    border-top-left-radius: .5rem;
+    width: 360px;
+    background: #fff;
+    color: rgb(114, 114, 114);
+    font: inherit;
+    border: 0;
+    outline: 0;
+    padding: 23px 17px;
+  }
+}

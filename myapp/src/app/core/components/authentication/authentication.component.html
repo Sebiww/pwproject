@@ -1,0 +1,30 @@
+<div class="authetnication-container">
+    <div class="form-container">
+        <div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+			<div class="signup">
+				<form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" ngModel name="email" placeholder="Email" required="">
+					<input type="password" ngModel name="password" placeholder="Password" required="">
+					<button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Login</button>
+                    <p class="text-eroare" *ngIf="validare">Email Address and Password do not match. </p>
+				</form>
+			</div>
+
+			<div class="login">
+				<form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" ngModel name="username" class="form-control" id="name" placeholder="Username" required="">
+					<input type="email" ngModel name="email" class="form-control" id="email" placeholder="Email" required="">
+					<input type="password" ngModel name="password" class="form-control" id="password" placeholder="Password" required="">
+                    <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary">Register</button>
+                    <p class="text-eroare" *ngIf="userExists">Username already in use.</p>
+                    <p class="text-eroare" *ngIf="emailExists">Email Address already in use.</p>
+                    <p class="text-eroare-2" *ngIf="createExists">Account created succsefully.</p>
+				</form>
+			</div>
+	    </div>
+    </div>
+    
+</div>

@@ -1,0 +1,101 @@
+<div class="compareacc-container">
+    <app-navbar></app-navbar>
+    <p class="home-text">In this section you can compare your in-game account with your friends.</p>
+    <div class="select-regions-container">
+        <div class="selector-body">
+            <div class="select">
+                <select [(ngModel)]="selectedOption" >
+                  <option selected disabled>Select a region for player 1</option>
+                  <option *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="selector-body">
+            <div class="select">
+                <select [(ngModel)]="selectedOption2" >
+                  <option selected disabled>Select a region for player 2</option>
+                  <option *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="introduce-name-container">
+        <div class="form-container" *ngIf="testSelection()">
+            <div class="item-container">
+              <form #checkstatsForm="ngForm" (ngSubmit)="onCheckStats(checkstatsForm)" class="form">
+                <input type="text" class="form__field" ngModel name="summonerName" id="summonerName" placeholder="Introduce Summoner Name" required="">
+                <button [disabled]="checkstatsForm.invalid" class="btn btn--primary btn--inside uppercase" type="submit">Lock In</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="form-container" *ngIf="testSelection2()">
+            <div class="item-container">
+              <form #checkstatsForm2="ngForm" (ngSubmit)="onCheckStats2(checkstatsForm2)" class="form">
+                <input type="text" class="form__field" ngModel name="summonerName2" id="summonerName2" placeholder="Introduce Summoner Name" required="">
+                <button [disabled]="checkstatsForm2.invalid" class="btn btn--primary btn--inside uppercase" type="submit">Lock In</button>
+              </form>
+            </div>
+          </div>
+    </div>
+    <p class="summoner-not-found-text" *ngIf="summonerExists">Summoner #1 does not exist.</p>
+    <p class="summoner-not-found-text" *ngIf="summonerExists2">Summoner #2 does not exist.</p>
+    <div class="tabels-container">
+        <div class="table-container" *ngIf="testShowStats">
+            <div class="table">
+              <p class="table-text">Stats for {{summonerName}}</p>
+              <div [class]="headerClass">
+                <div class="header__item"><a id="name" class="filter__link"></a></div>
+                <div class="header__item"><a id="wins" class="filter__link filter__link--number">Queue Type</a></div>
+                <div class="header__item"><a id="wins" class="filter__link filter__link--number">Rank</a></div>
+                <div class="header__item"><a id="draws" class="filter__link filter__link--number">League Points</a></div>
+                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Wins</a></div>
+                <div class="header__item"><a id="total" class="filter__link filter__link--number">Loses</a></div>
+                <div class="header__item"><a id="total" class="filter__link filter__link--number">WinRate</a></div>
+              </div>
+              <div class="table-content">	
+                <div [class]="rowClass" *ngFor="let summoner of forSummonerStats; index as i">
+                  <div class="table-data">{{i+1}}</div>
+                  <div class="table-data">{{getQueueType(summoner.queueType)}}</div>
+                  <div class="table-data">{{summoner.tier}} {{summoner.rank}}</div>
+                  <div class="table-data">{{summoner.leaguePoints}}</div>
+                  <div class="table-data">{{summoner.wins}}</div>
+                  <div class="table-data">{{summoner.losses}}</div>
+                  <div class="table-data">{{getWinRate(summoner.wins, summoner.losses)}}%</div>
+                </div>
+              </div>	
+            </div>
+          </div>
+          <div class="table-container" *ngIf="testShowStats2">
+            <div class="table">
+              <p class="table-text">Stats for {{summonerName2}}</p>
+              <div [class]="headerClass2">
+                <div class="header__item"><a id="name" class="filter__link"></a></div>
+                <div class="header__item"><a id="wins" class="filter__link filter__link--number">Queue Type</a></div>
+                <div class="header__item"><a id="wins" class="filter__link filter__link--number">Rank</a></div>
+                <div class="header__item"><a id="draws" class="filter__link filter__link--number">League Points</a></div>
+                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Wins</a></div>
+                <div class="header__item"><a id="total" class="filter__link filter__link--number">Loses</a></div>
+                <div class="header__item"><a id="total" class="filter__link filter__link--number">WinRate</a></div>
+              </div>
+              <div class="table-content">	
+                <div [class]="rowClass2" *ngFor="let summoner of forSummonerStats2; index as i">
+                  <div class="table-data">{{i+1}}</div>
+                  <div class="table-data">{{getQueueType(summoner.queueType)}}</div>
+                  <div class="table-data">{{summoner.tier}} {{summoner.rank}}</div>
+                  <div class="table-data">{{summoner.leaguePoints}}</div>
+                  <div class="table-data">{{summoner.wins}}</div>
+                  <div class="table-data">{{summoner.losses}}</div>
+                  <div class="table-data">{{getWinRate(summoner.wins, summoner.losses)}}%</div>
+                </div>
+              </div>	
+            </div>
+          </div>
+    </div>
+
+    <div class="container-compare-accounts">
+      <button *ngIf="testShowStats && testShowStats2" (click)="validateComparison()" class="btn2 btn2--primary btn2--inside uppercase">Compare Accounts</button>
+    </div>
+    
+</div>

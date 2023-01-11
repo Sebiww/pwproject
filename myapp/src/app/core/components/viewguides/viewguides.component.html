@@ -1,0 +1,14 @@
+<div class="viewguides-container">
+    <app-navbar></app-navbar>
+    <p class="home-text">In this section a list with all the current champions will be shown. Click on the icon in order to access the external guide.</p>
+    <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+    <ng-container class="cards-container" *ngFor="let champi of champions">
+        <div class="champion-cards" *ngIf="searchText === '' || champi.toLowerCase().includes(searchText.toLowerCase())">
+            <div class="champion-card"  (click)="goToLink(champi)">
+                <div class="card-header">{{champi}}</div>
+                <img class="card-body" [src]="getChampionImg(champi)" [alt]="champi">
+            </div>
+        </div>
+    </ng-container>
+</div>
+    

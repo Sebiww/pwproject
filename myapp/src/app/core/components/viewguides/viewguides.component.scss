@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+.home-text{
+   margin-top: 35px;
+    color: rgb(255, 255, 255);
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    font-size: 20px;
+    background: rgb(65,105,225);
+    padding: .5rem;
+  }
+
+  .champion-cards{
+    display: inline-flex;
+    max-width: 369px;
+    max-height: 250px;
+    text-align: center;
+    margin: .1rem;
+    padding: .1rem;
+  }
+  .champion-card{
+    background-color: rgb(65,105,225);
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .2);
+    overflow: hidden;
+    transition: 100ms transform ease-in-out;
+    
+  }
+  .card-header{
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.1rem;
+    color: white;
+  }
+  .card-body{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    object-position: center;
+    
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .champion-card:hover {
+    transform: scale(1.1);
+  }
+  .hide{
+    display: none;
+  }
+  

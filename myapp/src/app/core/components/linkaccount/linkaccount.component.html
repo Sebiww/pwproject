@@ -1,0 +1,30 @@
+<div class="linkacc-container">
+    <app-navbar></app-navbar>
+    <p class="home-text">In this section you can link your in-game account to your "WW" account.</p>
+    <div class="common-div" *ngIf="!linkedAcc">
+        <div class="selector-body">
+        <div class="select">
+            <select [(ngModel)]="selectedOption" >
+              <option selected disabled>Select a region</option>
+              <option *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="introduce-name-container">
+      <div class="form-container" *ngIf="testSelection()">
+        <div class="item-container">
+          <form #checkstatsForm="ngForm" (ngSubmit)="checkIfSummonerExists()" class="form">
+            <input type="text" class="form__field" ngModel name="summonerName" id="summonerName" placeholder="Introduce Summoner Name" required="" [(ngModel)]="inputValue">
+            <button [disabled]="checkstatsForm.invalid" class="btn btn--primary btn--inside uppercase" type="submit">Lock In</button>
+          </form>
+        </div>
+      </div>
+    
+    <p class="text-eroare" *ngIf="checkForExist()">Summoner does not exist.</p>
+    </div>
+    </div>
+    
+    
+    <p class="home-text-2" *ngIf="linkedAcc">You have already linked a lol account to your "WW" account.</p>
+</div>
